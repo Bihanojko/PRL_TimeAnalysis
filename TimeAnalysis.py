@@ -66,10 +66,22 @@ def strToSeconds(timeStamp):
     return minutes * 60 + seconds
 
 
+# Preparing file takes the longest
+for testData in testSet:
+    subprocess.check_output(["dd",
+                             "if=/dev/random",
+                             "bs=1",
+                             "count=" + testData[0],
+                             "of=numbers" + testData[0]])
+
 elapsedTimes = [0] * ITERATION_COUNT
 for testData in testSet:
+    output = subprocess.check_output(["cp", "numbers" + testData[0], "numbers"])
     for i in range(ITERATION_COUNT):
         output = subprocess.check_output(["./test.sh", testData[0], testData[1]], stderr=subprocess.STDOUT).decode('utf-8').split("\n")
         elapsedTimes[i] = strToSeconds(output[int(testData[0]) + WANTED_TIME][4:])
     averageTime = sum(elapsedTimes) / float(ITERATION_COUNT)
     print(testData[0] + "; " + testData[1] + '; ' + str(averageTime))
+
+# Clean up after yourself
+output = subprocess.check_output(["rm", "numbers*"])
