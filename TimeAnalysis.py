@@ -81,7 +81,7 @@ for testData in testSet:
         output = subprocess.check_output(["./test.sh", testData[0], testData[1]], stderr=subprocess.STDOUT).decode('utf-8').split("\n")
         elapsedTimes[i] = strToSeconds(output[int(testData[0]) + WANTED_TIME][4:])
     averageTime = sum(elapsedTimes) / float(ITERATION_COUNT)
-    print(testData[0] + "; " + testData[1] + '; ' + str(averageTime))
+    print("{0} {1}".format(testData[0], averageTime))
 
 # Clean up after yourself
 output = subprocess.check_output(["rm", "numbers*"])

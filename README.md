@@ -13,4 +13,4 @@ To: time mpirun --prefix OpenMPI -np $2 mss
 4. In TimeAnalysis.py, change line 8 for different count of experiments per testing set and change line 9 for different type of time measurement
 
 Output format:
-{length_of_sequence}; {number_of_processors}; {elapsed_time}\n
+{length_of_sequence} {elapsed_time}\n
