@@ -3,8 +3,8 @@ Test script for PRL project 1 time complexity analysis
 
 Usage:
 1. Add "time" to test.sh
-Change: mpirun --prefix OpenMPI -np $2 mss 
-To: time mpirun --prefix OpenMPI -np $2 mss
+Change: mpirun --prefix OpenMPI -np 'proc_numbers' mss 'args'
+To: time mpirun --prefix OpenMPI -np 'proc_numbers' mss 'args'
 
 2. Comment all prints in your program (printing is slow and shadows real time)
 
