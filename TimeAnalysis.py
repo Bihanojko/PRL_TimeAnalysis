@@ -1,7 +1,7 @@
 import subprocess
 
 
-TIME_VARIANTS = {'real': 2, 'user': 3, 'sys': 4}
+TIME_VARIANTS = {'real': 1, 'user': 2, 'sys': 3}
 
 
 # CHANGE
@@ -79,7 +79,7 @@ for testData in testSet:
     output = subprocess.check_output(["cp", "numbers" + testData[0], "numbers"])
     for i in range(ITERATION_COUNT):
         output = subprocess.check_output(["./test.sh", testData[0], testData[1]], stderr=subprocess.STDOUT).decode('utf-8').split("\n")
-        elapsedTimes[i] = strToSeconds(output[int(testData[0]) + WANTED_TIME][4:])
+        elapsedTimes[i] = strToSeconds(output[WANTED_TIME][4:])
     averageTime = sum(elapsedTimes) / float(ITERATION_COUNT)
     print("{0} {1}".format(testData[0], averageTime))
 
