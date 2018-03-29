@@ -42,7 +42,10 @@ elapsedTimes = [0] * ITERATION_COUNT
 for testData in testSet:
     output = subprocess.check_output(["cp", "numbers" + testData[0], "numbers"])
     for i in range(ITERATION_COUNT):
-        output = subprocess.check_output(["./test.sh", testData[0], testData[1]], stderr=subprocess.STDOUT).decode('utf-8').split("\n")
+        output = subprocess.check_output(["./test.sh",
+                                          testData[0],
+                                          testData[1]],
+                                         stderr=subprocess.STDOUT).decode('utf-8').split("\n")
         elapsedTimes[i] = strToSeconds(output[WANTED_TIME][4:])
     averageTime = sum(elapsedTimes) / float(ITERATION_COUNT)
     print("{0} {1}".format(testData[0], averageTime))
