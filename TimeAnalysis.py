@@ -6,7 +6,7 @@ TIME_VARIANTS = {'real': 2, 'user': 3, 'sys': 4}
 
 # CHANGE
 ITERATION_COUNT = 10
-WANTED_TIME = TIME_VARIANTS['user']
+WANTED_TIME = TIME_VARIANTS['real']
 # CHANGE
 
 
